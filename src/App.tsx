@@ -6,7 +6,7 @@ function App() {
     <main className="flex flex-col justify-start items-center gap-4 md:gap-12 mx-auto px-4 md:px-0 pt-4 md:pt-24 max-w-xl h-screen">
       <header className="flex flex-col items-center gap-0.5 md:gap-2">
         <Logo className="text-green-500 size-20" />
-        <h1 className="font-bold text-2xl">
+        <h1 className="font-bold text-2xl select-none">
           PLANT <strong>MATCH</strong>
         </h1>
       </header>
