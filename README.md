@@ -47,18 +47,6 @@ yarn install
 - 🔄 Gestión de estado eficiente
 - 📱 Diseño adaptable para todos los dispositivos
 
-## Estructura del Proyecto
-
-plant-match/
-├── src/
-│ ├── components/
-│ ├── pages/
-│ ├── hooks/
-│ ├── utils/
-│ └── App.tsx
-├── public/
-└── ...
-
 ## Contribución
 
 Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría realizar.
