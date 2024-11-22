@@ -1,4 +1,4 @@
-import { Radio, RadioGroup } from "@headlessui/react";
+import { RadioGroup } from "@headlessui/react";
 import parse from "html-react-parser";
 import {
   BookOpenIcon,
@@ -28,8 +28,13 @@ import type { z } from "zod";
 import Button from "./ui/Button";
 import { motion } from "motion/react";
 import { askAI } from "../lib/ai";
+import Radio from "./ui/Radio";
 
 const duration = 0.075;
+const initialAnimation = { opacity: 0, x: -500 };
+const animateAnimation = { opacity: 1, x: 0 };
+const exitAnimation = { opacity: 0, x: 500 };
+
 export default function PlantForm() {
   const [step, setStep] = useState(0);
   const [askingAI, setAskingAI] = useState(false);
@@ -69,9 +74,9 @@ export default function PlantForm() {
         <motion.section
           className="flex flex-col gap-4"
           transition={{ duration }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
+          initial={initialAnimation}
+          animate={animateAnimation}
+          exit={exitAnimation}
         >
           <div className="p-4 text-pretty text-sm">
             "Encontrá tu planta perfecta 🌱" ¿Buscás darle vida a tu espacio con
@@ -89,9 +94,9 @@ export default function PlantForm() {
         <motion.section
           className="flex flex-col gap-4"
           transition={{ duration }}
-          initial={{ opacity: 0, x: -500 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -500 }}
+          initial={initialAnimation}
+          animate={animateAnimation}
+          exit={exitAnimation}
         >
           <h2 className="flex items-center gap-2 font-semibold text-lg">
             <LightBulbIcon className="size-6" />
@@ -106,11 +111,7 @@ export default function PlantForm() {
             value={watch("lightConditions")}
           >
             {lightConditionsOptions.map((condition) => (
-              <Radio
-                key={condition.key}
-                value={condition.key}
-                className="relative flex bg-white/5 data-[checked]:bg-white/10 shadow-md px-5 py-4 rounded-lg text-white transition cursor-pointer group focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
-              >
+              <Radio key={condition.key} value={condition.key}>
                 <div className="flex justify-between items-center w-full">
                   <div className="text-sm/6">
                     <p className="font-semibold text-white">{condition.name}</p>
@@ -130,9 +131,9 @@ export default function PlantForm() {
       {step === 2 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
-          initial={{ opacity: 0, x: -500 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -500 }}
+          initial={initialAnimation}
+          animate={animateAnimation}
+          exit={exitAnimation}
           className="flex flex-col gap-4"
         >
           <h2 className="flex items-center gap-2 font-semibold text-lg">
@@ -148,11 +149,7 @@ export default function PlantForm() {
             value={watch("spaceAvailable")}
           >
             {spaceAvailableOptions.map((option) => (
-              <Radio
-                key={option.key}
-                value={option.key}
-                className="relative flex bg-white/5 data-[checked]:bg-white/10 shadow-md px-5 py-4 rounded-lg text-white transition cursor-pointer group focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
-              >
+              <Radio key={option.key} value={option.key}>
                 <div className="flex justify-between items-center w-full">
                   <div className="text-sm/6">
                     <p className="font-semibold text-white">{option.name}</p>
@@ -179,9 +176,9 @@ export default function PlantForm() {
       {step === 3 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
-          initial={{ opacity: 0, x: -500 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -500 }}
+          initial={initialAnimation}
+          animate={animateAnimation}
+          exit={exitAnimation}
           className="flex flex-col gap-4"
         >
           <h2 className="flex items-center gap-2 font-semibold text-lg">
@@ -197,11 +194,7 @@ export default function PlantForm() {
             value={watch("temperature")}
           >
             {temperatureOptions.map((option) => (
-              <Radio
-                key={option.key}
-                value={option.key}
-                className="relative flex bg-white/5 data-[checked]:bg-white/10 shadow-md px-5 py-4 rounded-lg text-white transition cursor-pointer group focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
-              >
+              <Radio key={option.key} value={option.key}>
                 <div className="flex justify-between items-center w-full">
                   <div className="text-sm/6">
                     <p className="font-semibold text-white">{option.name}</p>
@@ -225,9 +218,9 @@ export default function PlantForm() {
       {step === 4 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
-          initial={{ opacity: 0, x: -500 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -500 }}
+          initial={initialAnimation}
+          animate={animateAnimation}
+          exit={exitAnimation}
           className="flex flex-col gap-4"
         >
           <h2 className="flex items-center gap-2 font-semibold text-lg">
@@ -243,11 +236,7 @@ export default function PlantForm() {
             value={watch("careLevel")}
           >
             {careLevelOptions.map((option) => (
-              <Radio
-                key={option.key}
-                value={option.key}
-                className="relative flex bg-white/5 data-[checked]:bg-white/10 shadow-md px-5 py-4 rounded-lg text-white transition cursor-pointer group focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
-              >
+              <Radio key={option.key} value={option.key}>
                 <div className="flex justify-between items-center w-full">
                   <div className="text-sm/6">
                     <p className="font-semibold text-white">{option.name}</p>
@@ -274,9 +263,9 @@ export default function PlantForm() {
       {step === 5 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
-          initial={{ opacity: 0, x: -500 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -500 }}
+          initial={initialAnimation}
+          animate={animateAnimation}
+          exit={exitAnimation}
           className="flex flex-col gap-4"
         >
           <h2 className="flex items-center gap-2 font-semibold text-lg">
@@ -292,11 +281,7 @@ export default function PlantForm() {
             value={watch("humidity")}
           >
             {humidityOptions.map((option) => (
-              <Radio
-                key={option.key}
-                value={option.key}
-                className="relative flex bg-white/5 data-[checked]:bg-white/10 shadow-md px-5 py-4 rounded-lg text-white transition cursor-pointer group focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
-              >
+              <Radio key={option.key} value={option.key}>
                 <div className="flex justify-between items-center w-full">
                   <div className="text-sm/6">
                     <p className="font-semibold text-white">{option.name}</p>
@@ -323,9 +308,9 @@ export default function PlantForm() {
       {step === 6 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
-          initial={{ opacity: 0, x: -500 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -500 }}
+          initial={initialAnimation}
+          animate={animateAnimation}
+          exit={exitAnimation}
           className="flex flex-col gap-4"
         >
           <h2 className="flex items-center gap-2 font-semibold text-lg">
@@ -341,11 +326,7 @@ export default function PlantForm() {
             value={watch("desiredStyle")}
           >
             {desiredStyleOptions.map((option) => (
-              <Radio
-                key={option.key}
-                value={option.key}
-                className="relative flex bg-white/5 data-[checked]:bg-white/10 shadow-md px-5 py-4 rounded-lg text-white transition cursor-pointer group focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
-              >
+              <Radio key={option.key} value={option.key}>
                 <div className="flex justify-between items-center w-full">
                   <div className="text-sm/6">
                     <p className="font-semibold text-white">{option.name}</p>
@@ -372,9 +353,9 @@ export default function PlantForm() {
       {step === 7 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
-          initial={{ opacity: 0, x: -500 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -500 }}
+          initial={initialAnimation}
+          animate={animateAnimation}
+          exit={exitAnimation}
           className="flex flex-col gap-4"
         >
           <h2 className="flex items-center gap-2 font-semibold text-lg">
@@ -390,11 +371,7 @@ export default function PlantForm() {
             value={watch("experienceLevel")}
           >
             {experienceLevelOptions.map((option) => (
-              <Radio
-                key={option.key}
-                value={option.key}
-                className="relative flex bg-white/5 data-[checked]:bg-white/10 shadow-md px-5 py-4 rounded-lg text-white transition cursor-pointer group focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white"
-              >
+              <Radio key={option.key} value={option.key}>
                 <div className="flex justify-between items-center w-full">
                   <div className="text-sm/6">
                     <p className="font-semibold text-white">{option.name}</p>
