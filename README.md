@@ -28,10 +28,6 @@ cd plant-match
 
 npm install
 
-# o
-
-yarn install
-
 ## Scripts Disponibles
 
 - `npm run dev` - Inicia el servidor de desarrollo
@@ -46,6 +42,18 @@ yarn install
 - ✨ Validación de formularios robusta
 - 🔄 Gestión de estado eficiente
 - 📱 Diseño adaptable para todos los dispositivos
+
+## Estructura del Proyecto
+
+plant-match/
+├── src/
+│ ├── components/
+│ ├── pages/
+│ ├── hooks/
+│ ├── utils/
+│ └── App.tsx
+├── public/
+└── ...
 
 ## Contribución
 
