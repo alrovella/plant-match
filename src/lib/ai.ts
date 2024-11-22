@@ -11,11 +11,12 @@ export async function askAI(data: z.infer<typeof plantFormSchema>) {
   if (!data) return;
 
   const result = await generateText({
-    system: `Eres un experto en plantas, tu objetivo es recomendar una planta para el usuario basado en los datos que te proporciona.
+    system: `Eres un experto en plantas, tu objetivo es recomendar de 1 a 3 plantas para el usuario basado en los datos que te proporciona.
             El texto debe ser claro e informativo, dando consejos de cuidados y mantenimiento.
             El formato debe ser en HTML usando estilos de Tailwind CSS. Evita usar los tags: <html>, <head>, <body>, no los necesito. Solo dame un <div> como contenedor 
             y ahi dentro el contenido formateado como te comente mas arriba. No muestres imagenes, solo texto.
             No uses simbolos ni caracteres especiales, solo usa letras, numeros y espacios. No coloques ningun titulo.
+            Si recomendas mas de una planta, separa cada una con un <hr />
     `,
     model: google("gemini-1.5-flash"),
     prompt: `Quiero que me recomiendes una planta. 
