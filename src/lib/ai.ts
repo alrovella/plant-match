@@ -17,6 +17,7 @@ export async function askAI(data: z.infer<typeof plantFormSchema>) {
             y ahi dentro el contenido formateado como te comente mas arriba. No muestres imagenes, solo texto.
             No uses simbolos ni caracteres especiales, solo usa letras, numeros y espacios. No coloques ningun titulo.
             Si recomendas mas de una planta, separa cada una con un <hr class="my-4" /> y con un gap de 1rem entre cada recomendacion.
+            Al terminar la descripcion de cada planta agrega un link (que abra en otra pestaña) al buscador google con el nombre de la planta. El link llamalo "Mas información".
     `,
     model: google("gemini-1.5-flash"),
     prompt: `Quiero que me recomiendes una planta. 
