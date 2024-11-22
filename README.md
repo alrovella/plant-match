@@ -1,50 +1,72 @@
-# React + TypeScript + Vite
+# Plant Match 🌱
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plant Match es una aplicación web moderna desarrollada con React que ayuda a los usuarios a encontrar y combinar plantas ideales para sus espacios.
 
-Currently, two official plugins are available:
+## Tecnologías Principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Google AI SDK
+- React Hook Form
+- Zod (validación)
 
-## Expanding the ESLint configuration
+## Requisitos Previos
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Node.js (versión LTS recomendada)
+- npm o yarn
 
-- Configure the top-level `parserOptions` property like this:
+## Instalación
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Clona el repositorio:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+git clone https://github.com/tu-usuario/plant-match.git
+cd plant-match
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2. Instala las dependencias:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+npm install
+
+# o
+
+yarn install
+
+## Scripts Disponibles
+
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Compila el proyecto para producción
+- `npm run lint` - Ejecuta el linter para verificar el código
+- `npm run preview` - Previsualiza la versión de producción localmente
+
+## Características
+
+- 🎨 Interfaz moderna y responsive con Tailwind CSS
+- 🤖 Integración con IA de Google
+- ✨ Validación de formularios robusta
+- 🔄 Gestión de estado eficiente
+- 📱 Diseño adaptable para todos los dispositivos
+
+## Estructura del Proyecto
+
+plant-match/
+├── src/
+│ ├── components/
+│ ├── pages/
+│ ├── hooks/
+│ ├── utils/
+│ └── App.tsx
+├── public/
+└── ...
+
+## Contribución
+
+Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría realizar.
+
+## Licencia
+
+Este proyecto está licenciado para uso público.
+
+---
+
+Desarrollado con ❤️ por Ale Rovella
