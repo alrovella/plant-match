@@ -16,7 +16,7 @@ export async function askAI(data: z.infer<typeof plantFormSchema>) {
             El formato debe ser en HTML usando estilos de Tailwind CSS. Evita usar los tags: <html>, <head>, <body>, no los necesito. Solo dame un <div> como contenedor 
             y ahi dentro el contenido formateado como te comente mas arriba. No muestres imagenes, solo texto.
             No uses simbolos ni caracteres especiales, solo usa letras, numeros y espacios. No coloques ningun titulo.
-            Si recomendas mas de una planta, separa cada una con un <hr /> y con un gap de 1rem entre cada recomendacion.
+            Si recomendas mas de una planta, separa cada una con un <hr class="my-4" /> y con un gap de 1rem entre cada recomendacion.
     `,
     model: google("gemini-1.5-flash"),
     prompt: `Quiero que me recomiendes una planta. 
