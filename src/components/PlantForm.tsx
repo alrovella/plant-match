@@ -1,8 +1,10 @@
 import { Radio, RadioGroup } from "@headlessui/react";
+import parse from "html-react-parser";
 import {
   BookOpenIcon,
   CheckCircleIcon,
   CloudIcon,
+  DocumentMagnifyingGlassIcon,
   FireIcon,
   HeartIcon,
   HomeIcon,
@@ -25,10 +27,15 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import type { z } from "zod";
 import Button from "./ui/Button";
 import { motion } from "motion/react";
+import { askAI } from "../lib/ai";
 
+const duration = 0.075;
 export default function PlantForm() {
   const [step, setStep] = useState(0);
-  const duration = 0.075;
+  const [askingAI, setAskingAI] = useState(false);
+  const [recommendation, setRecommendation] = useState<string | undefined>(
+    undefined
+  );
   const { handleSubmit, setValue, watch } = useForm<
     z.infer<typeof plantFormSchema>
   >({
@@ -39,20 +46,26 @@ export default function PlantForm() {
       temperature: "10-20°C",
       careLevel: "medio",
       humidity: "moderada",
-      desiredStyle: "decorativa",
-      experienceLevel: "principiante",
+      desiredStyle: "funcional",
+      experienceLevel: "intermedio",
     },
   });
 
-  const onSubmit: SubmitHandler<z.infer<typeof plantFormSchema>> = (data) =>
-    console.log(data);
+  const onSubmit: SubmitHandler<z.infer<typeof plantFormSchema>> = async (
+    data
+  ) => {
+    setAskingAI(true);
+    const recommendation = await askAI(data);
+    setRecommendation(recommendation);
+    setAskingAI(false);
+  };
 
   return (
     <form
       className="flex flex-col gap-4 w-full"
       onSubmit={handleSubmit(onSubmit)}
     >
-      {step === 0 && (
+      {step === 0 && !askingAI && !recommendation && (
         <motion.section
           className="flex flex-col gap-4"
           transition={{ duration }}
@@ -72,7 +85,7 @@ export default function PlantForm() {
         </motion.section>
       )}
 
-      {step === 1 && (
+      {step === 1 && !askingAI && !recommendation && (
         <motion.section
           className="flex flex-col gap-4"
           transition={{ duration }}
@@ -114,7 +127,7 @@ export default function PlantForm() {
         </motion.section>
       )}
 
-      {step === 2 && (
+      {step === 2 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
           initial={{ opacity: 0, x: -500 }}
@@ -163,7 +176,7 @@ export default function PlantForm() {
         </motion.section>
       )}
 
-      {step === 3 && (
+      {step === 3 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
           initial={{ opacity: 0, x: -500 }}
@@ -209,7 +222,7 @@ export default function PlantForm() {
         </motion.section>
       )}
 
-      {step === 4 && (
+      {step === 4 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
           initial={{ opacity: 0, x: -500 }}
@@ -258,7 +271,7 @@ export default function PlantForm() {
         </motion.section>
       )}
 
-      {step === 5 && (
+      {step === 5 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
           initial={{ opacity: 0, x: -500 }}
@@ -307,7 +320,7 @@ export default function PlantForm() {
         </motion.section>
       )}
 
-      {step === 6 && (
+      {step === 6 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
           initial={{ opacity: 0, x: -500 }}
@@ -356,7 +369,7 @@ export default function PlantForm() {
         </motion.section>
       )}
 
-      {step === 7 && (
+      {step === 7 && !askingAI && !recommendation && (
         <motion.section
           transition={{ duration }}
           initial={{ opacity: 0, x: -500 }}
@@ -401,6 +414,82 @@ export default function PlantForm() {
             className="bg-gray-500 hover:bg-gray-600 active:bg-gray-700 font-normal text-white"
           >
             Volver atrás
+          </Button>
+        </motion.section>
+      )}
+
+      {askingAI && (
+        <motion.div
+          className="flex flex-col justify-center items-center gap-4"
+          transition={{ duration }}
+          initial={{ opacity: 0, x: 500 }}
+          animate={{ opacity: 1, x: 0 }}
+        >
+          <h3 className="flex items-center gap-2 font-semibold text-xl">
+            <span>Buscando tu planta perfecta</span>
+            <span>
+              <motion.span
+                animate={{ opacity: [0.0, 1, 0.0] }}
+                transition={{
+                  duration: 1,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                }}
+              >
+                .
+              </motion.span>
+              <motion.span
+                animate={{ opacity: [0.0, 1.0, 0.0] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                }}
+              >
+                .
+              </motion.span>
+              <motion.span
+                animate={{ opacity: [0.0, 1.0, 0.0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                }}
+              >
+                .
+              </motion.span>
+            </span>
+          </h3>
+          <motion.span
+            animate={{ opacity: [0.3, 1, 0.3] }}
+            transition={{
+              duration: 1,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "loop",
+            }}
+          >
+            <DocumentMagnifyingGlassIcon className="size-20" />
+          </motion.span>
+        </motion.div>
+      )}
+      {recommendation && (
+        <motion.section
+          transition={{ duration }}
+          initial={{ opacity: 0, x: -500 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -500 }}
+          className="flex flex-col gap-4 mb-8 w-full"
+        >
+          <div className="text-pretty prose">{parse(recommendation)}</div>
+          <Button
+            type="button"
+            onClick={() => {
+              setRecommendation(undefined);
+              setStep(0);
+            }}
+            className="bg-gray-500 hover:bg-gray-600 active:bg-gray-700 font-normal text-white"
+          >
+            Volver al inicio
           </Button>
         </motion.section>
       )}
