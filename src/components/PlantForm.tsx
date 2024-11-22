@@ -425,7 +425,7 @@ export default function PlantForm() {
           initial={{ opacity: 0, x: 500 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          <h3 className="flex items-center gap-2 font-semibold text-xl">
+          <h3 className="flex items-center gap-2 font-semibold text-xl select-none">
             <span>Buscando tu planta perfecta</span>
             <span>
               <motion.span
