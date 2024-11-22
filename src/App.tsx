@@ -1,5 +1,5 @@
 import Logo from "./components/Logo";
-import PlantForm from "./components/PlantForm";
+import Form from "./components/Form";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
           PLANT <strong>MATCH</strong>
         </h1>
       </header>
-      <PlantForm />
+      <Form />
     </main>
   );
 }
