@@ -98,7 +98,10 @@ export default function PlantForm() {
           animate={animateAnimation}
           exit={exitAnimation}
         >
-          <h2 className="flex items-center gap-2 font-semibold text-lg">
+          <h2
+            className="flex items-center gap-2 font-semibold text-lg"
+            data-testid="light-conditions"
+          >
             <LightBulbIcon className="size-6" />
             Condiciones de Luz
           </h2>
@@ -136,7 +139,10 @@ export default function PlantForm() {
           exit={exitAnimation}
           className="flex flex-col gap-4"
         >
-          <h2 className="flex items-center gap-2 font-semibold text-lg">
+          <h2
+            className="flex items-center gap-2 font-semibold text-lg"
+            data-testid="space-available"
+          >
             <HomeIcon className="size-6" />
             Espacio disponible
           </h2>
@@ -181,7 +187,10 @@ export default function PlantForm() {
           exit={exitAnimation}
           className="flex flex-col gap-4"
         >
-          <h2 className="flex items-center gap-2 font-semibold text-lg">
+          <h2
+            className="flex items-center gap-2 font-semibold text-lg"
+            data-testid="temperature"
+          >
             <FireIcon className="size-6" />
             Temperatura
           </h2>
@@ -223,7 +232,10 @@ export default function PlantForm() {
           exit={exitAnimation}
           className="flex flex-col gap-4"
         >
-          <h2 className="flex items-center gap-2 font-semibold text-lg">
+          <h2
+            className="flex items-center gap-2 font-semibold text-lg"
+            data-testid="care-level"
+          >
             <HeartIcon className="size-6" />
             Nivel de cuidado
           </h2>
@@ -268,7 +280,10 @@ export default function PlantForm() {
           exit={exitAnimation}
           className="flex flex-col gap-4"
         >
-          <h2 className="flex items-center gap-2 font-semibold text-lg">
+          <h2
+            className="flex items-center gap-2 font-semibold text-lg"
+            data-testid="humidity"
+          >
             <CloudIcon className="size-6" />
             Humedad
           </h2>
@@ -313,7 +328,10 @@ export default function PlantForm() {
           exit={exitAnimation}
           className="flex flex-col gap-4"
         >
-          <h2 className="flex items-center gap-2 font-semibold text-lg">
+          <h2
+            className="flex items-center gap-2 font-semibold text-lg"
+            data-testid="desired-style"
+          >
             <SwatchIcon className="size-6" />
             Estilo deseado
           </h2>
@@ -358,7 +376,10 @@ export default function PlantForm() {
           exit={exitAnimation}
           className="flex flex-col gap-4"
         >
-          <h2 className="flex items-center gap-2 font-semibold text-lg">
+          <h2
+            className="flex items-center gap-2 font-semibold text-lg"
+            data-testid="experience-level"
+          >
             <BookOpenIcon className="size-6" />
             Nivel de experiencia
           </h2>
@@ -397,6 +418,7 @@ export default function PlantForm() {
 
       {askingAI && (
         <motion.div
+          data-testid="loading"
           className="flex flex-col justify-center items-center gap-4"
           transition={{ duration }}
           initial={{ opacity: 0, x: 500 }}

@@ -11,7 +11,9 @@ Plant Match es una aplicación web moderna desarrollada con React que ayuda a lo
 - Google AI SDK
 - React Hook Form
 - Zod (validación)
-
+- Framer Motion (animaciones)
+- Playright (e2e test)
+  
 ## Requisitos Previos
 
 - Node.js (versión LTS recomendada)
