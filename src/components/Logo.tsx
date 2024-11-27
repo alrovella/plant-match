@@ -2,6 +2,7 @@ const Logo = ({ className }: { className?: string }) => {
   return (
     // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
     <svg
+      data-testid="logo"
       height="800px"
       width="800px"
       version="1.1"
